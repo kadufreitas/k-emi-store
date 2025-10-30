@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home, ProductList, ProductDetail } from './pages';
-import { Header } from './shared/layout';
+import { Header } from './common/layout';
 
-function App() {
+function AppRoutes() {
+  const basename = import.meta.env.BASE_URL || '/';
+
   return (
-    <Router>
+    <Router basename={basename}>
       <Header />
       <main className="min-h-screen bg-gray-50">
         <Routes>
@@ -17,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRoutes;
