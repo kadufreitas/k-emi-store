@@ -1,5 +1,5 @@
+import { BagCounter } from '@/bag/views/BagCounter';
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBagIcon } from '@/common/assets/icons/ShoppingBagIcon';
 
 const Header = () => {
   const location = useLocation();
@@ -60,16 +60,7 @@ const Header = () => {
             </div> */}
 
             {/* Cart */}
-            <button
-              type="button"
-              className="relative p-2 text-gray-600 transition-colors hover:text-blue-600"
-            >
-              <ShoppingBagIcon />
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-xs text-white">
-                0
-              </span>
-            </button>
-
+            <BagCounter />
             {/* Mobile menu button */}
             <button
               type="button"

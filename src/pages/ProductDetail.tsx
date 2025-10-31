@@ -7,7 +7,7 @@ function ProductDetailPage() {
   return (
     <div className="min-h-screen bg-white p-8">
       <div className="mx-auto max-w-6xl">
-        <ProductOffer id={parseInt(id || '0')} />
+        <ProductOffer id={id ?? ''} />
       </div>
     </div>
   );

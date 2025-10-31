@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useProduct } from '../hooks/useProductItem';
 
-export const ProductOffer = ({ id }: { id: number }) => {
-  const { product, loading, error } = useProduct(id);
+export const ProductOffer = ({ id }: { id: string }) => {
+  const { product, loading, error, addToBag } = useProduct(id);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -54,8 +54,9 @@ export const ProductOffer = ({ id }: { id: number }) => {
           <button
             type="button"
             className="rounded-lg bg-green-600 px-8 py-3 text-white transition-colors hover:bg-green-700"
+            onClick={addToBag}
           >
-            Add to Cart
+            Add to Bag
           </button>
           <button
             type="button"

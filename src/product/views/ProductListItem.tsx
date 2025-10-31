@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import type { Product } from '../entity/Product';
 import { ShoppingBagIcon } from '@/common/assets/icons/ShoppingBagIcon';
+import { useProductItem } from '../hooks/useProductItem';
 
 export const ProductListItem = ({ product }: { product: Product }) => {
+  const { addToBag, productIsAlreadyInBag } = useProductItem(product);
   // Calculate discount percentage (assuming originalPrice exists in future)
   // const originalPrice = product.price * 1.43; // Mock 30% discount
   // const discountPercentage = Math.round(
@@ -62,8 +64,13 @@ export const ProductListItem = ({ product }: { product: Product }) => {
         <button
           type="button"
           className="flex h-8 w-8 items-center justify-center transition-colors hover:cursor-pointer"
+          onClick={addToBag}
         >
-          <ShoppingBagIcon className="size-6 hover:text-blue-600" />
+          <ShoppingBagIcon
+            className={`size-6 hover:text-blue-600 ${
+              productIsAlreadyInBag ? 'text-blue-600' : 'text-gray-400'
+            }`}
+          />
         </button>
       </div>
     </div>
