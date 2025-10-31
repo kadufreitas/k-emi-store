@@ -1,33 +1,70 @@
 import { Link } from 'react-router-dom';
 import type { Product } from '../entity/Product';
+import { ShoppingBagIcon } from '@/common/assets/icons/ShoppingBagIcon';
 
 export const ProductListItem = ({ product }: { product: Product }) => {
+  // Calculate discount percentage (assuming originalPrice exists in future)
+  // const originalPrice = product.price * 1.43; // Mock 30% discount
+  // const discountPercentage = Math.round(
+  //   ((originalPrice - product.price) / originalPrice) * 100
+  // );
+
   return (
     <div
       key={product.id}
-      className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800"
+      className="group relative overflow-hidden rounded-lg border-2 border-solid border-gray-200 bg-white"
     >
-      <img
-        src={product.image}
-        alt={product.name}
-        className="mb-4 h-48 w-full rounded-lg object-cover"
-      />
-      <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
-        {product.name}
-      </h2>
-      <p className="mb-4 text-gray-600 dark:text-gray-300">
-        {product.description}
-      </p>
-      <div className="flex items-center justify-between">
-        <span className="text-2xl font-bold text-green-600">
-          ${product.price}
-        </span>
-        <Link
-          to={`/product-detail/${product.id}`}
-          className="rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
+      <Link to={`/product-detail/${product.id}`} className="block">
+        {/* Product Image */}
+        <div className="relative overflow-hidden">
+          <img
+            src={product.image}
+            alt={product.name}
+            // w-[230px]
+            className="h-[340px] w-full transition-transform group-hover:scale-105"
+          />
+
+          {/* Discount Badge */}
+          {/* {discountPercentage > 0 && (
+            <div className="absolute top-3 left-3 rounded bg-red-500 px-2 py-1 text-xs font-medium text-white">
+              -{discountPercentage}%
+            </div>
+          )} */}
+        </div>
+
+        {/* Product Info */}
+        <div className="p-4">
+          <div className="mb-2">
+            <h3 className="line-clamp-2 text-sm font-medium text-gray-900">
+              {product.name}
+            </h3>
+            {/* <p className="line-clamp-1 text-xs text-gray-500">
+              {product.description}
+            </p> */}
+          </div>
+
+          {/* Price */}
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-black">
+              ${product.price.toFixed(2)}
+            </span>
+            {/* {discountPercentage > 0 && (
+              <span className="text-sm text-gray-400 line-through">
+                ${originalPrice.toFixed(2)}
+              </span>
+            )} */}
+          </div>
+        </div>
+      </Link>
+
+      {/* Add to Cart Button */}
+      <div className="absolute right-4 bottom-4">
+        <button
+          type="button"
+          className="flex h-8 w-8 items-center justify-center transition-colors hover:cursor-pointer"
         >
-          View Details
-        </Link>
+          <ShoppingBagIcon className="size-6 hover:text-blue-600" />
+        </button>
       </div>
     </div>
   );

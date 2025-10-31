@@ -8,7 +8,7 @@ function AppRoutes() {
   return (
     <Router basename={basename}>
       <Header />
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-white">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product-list" element={<ProductList />} />

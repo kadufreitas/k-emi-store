@@ -30,6 +30,34 @@ export const useGetProducts = () => {
       description: 'Precision wireless mouse with long battery life.',
       image: 'https://picsum.photos/400',
     },
+    {
+      id: 5,
+      name: 'Premium Headphones',
+      price: 299.99,
+      description: 'High-quality wireless headphones with noise cancellation.',
+      image: 'https://picsum.photos/400',
+    },
+    {
+      id: 6,
+      name: 'Smart Watch',
+      price: 199.99,
+      description: 'Feature-rich smartwatch with health monitoring.',
+      image: 'https://picsum.photos/400',
+    },
+    {
+      id: 7,
+      name: 'Laptop Stand',
+      price: 49.99,
+      description: 'Ergonomic aluminum laptop stand for better posture.',
+      image: 'https://picsum.photos/400',
+    },
+    {
+      id: 8,
+      name: 'Wireless Mouse',
+      price: 79.99,
+      description: 'Precision wireless mouse with long battery life.',
+      image: 'https://picsum.photos/400',
+    },
   ];
   return { data: products, loading: false, error: null };
 };
