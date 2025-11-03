@@ -1,4 +1,7 @@
-import { ShoppingBagIcon as ShoppingBagIconBase } from '@heroicons/react/24/solid';
+import {
+  ShoppingBagIcon as ShoppingBagIconBase,
+  XMarkIcon as XMarkIconBsae,
+} from '@heroicons/react/24/solid';
 
 export const ShoppingBagIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
@@ -11,4 +14,8 @@ export const ShoppingBagIcon = (props: React.SVGProps<SVGSVGElement>) => {
       stroke="currentColor"
     />
   );
+};
+
+export const XMarkIcon = (props: React.SVGProps<SVGSVGElement>) => {
+  return <XMarkIconBsae {...props} />;
 };

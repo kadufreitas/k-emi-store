@@ -3,20 +3,18 @@ import { useGetProduct } from '../api';
 import type { Product } from '../entity/Product';
 
 export const useProductItem = (product: Product | null) => {
-  const { addItem, removeItem, isInBag } = useAppContext();
+  const { addBagItem, removeBagItem, isInBag } = useAppContext();
   const productIsAlreadyInBag = product ? isInBag(product.id) : false;
 
   const addToBag = () => {
     if (!product) return;
     if (productIsAlreadyInBag) {
-      removeItem(product.id);
+      removeBagItem(product.id);
       return;
     }
 
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
+    addBagItem({
+      ...product,
       quantity: 1,
     });
   };

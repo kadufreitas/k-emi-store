@@ -29,8 +29,8 @@ const Header = () => {
                 to="/"
                 className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                   isActive('/')
-                    ? 'text-blue-600'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
+                    ? 'text-[var(--color-purple)]'
+                    : 'text-gray-700 hover:bg-gray-50 hover:text-[var(--color-purple)]'
                 }`}
               >
                 Home
@@ -39,8 +39,8 @@ const Header = () => {
                 to="/product-list"
                 className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                   isActive('/product-list')
-                    ? 'text-blue-600'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'
+                    ? 'text-[var(--color-purple)]'
+                    : 'text-gray-700 hover:bg-gray-50 hover:text-[var(--color-purple)]'
                 }`}
               >
                 Products
