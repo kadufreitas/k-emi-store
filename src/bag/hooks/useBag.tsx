@@ -4,11 +4,11 @@ import type { BagItem } from '../entity/Bag';
 export const useBag = () => {
   const [items, setItems] = useState<BagItem[]>([]);
 
-  const addItem = (item: BagItem) => {
+  const addBagItem = (item: BagItem) => {
     setItems(prevItems => [...prevItems, item]);
   };
 
-  const removeItem = (itemId: string) => {
+  const removeBagItem = (itemId: string) => {
     setItems(prevItems => prevItems.filter(item => item.id !== itemId));
   };
 
@@ -16,9 +16,9 @@ export const useBag = () => {
     return items.some(item => item.id === itemId);
   };
 
-  const getCount = () => {
+  const getBagCount = () => {
     return items.reduce((total, item) => total + item.quantity, 0);
   };
 
-  return { items, addItem, removeItem, isInBag, getCount };
+  return { bagItems: items, addBagItem, removeBagItem, isInBag, getBagCount };
 };

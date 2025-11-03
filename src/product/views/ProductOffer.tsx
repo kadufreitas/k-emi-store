@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { useProduct } from '../hooks/useProductItem';
 
 export const ProductOffer = ({ id }: { id: string }) => {
-  const { product, loading, error, addToBag } = useProduct(id);
+  const { product, loading, error, productIsAlreadyInBag, addToBag } =
+    useProduct(id);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -23,7 +24,7 @@ export const ProductOffer = ({ id }: { id: string }) => {
           </p>
           <Link
             to="/product-list"
-            className="rounded-lg bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700"
+            className="rounded-lg bg-[var(--color-purple)] px-6 py-3 text-white transition-colors hover:bg-[var(--color-dark-purple)]"
           >
             Back to Products
           </Link>
@@ -46,24 +47,22 @@ export const ProductOffer = ({ id }: { id: string }) => {
         <h1 className="mb-4 text-4xl font-bold text-gray-900">
           {product.name}
         </h1>
-        <p className="mb-6 text-3xl font-bold text-green-600">
-          ${product.price}
-        </p>
+        <p className="mb-6 text-3xl font-medium text-black">${product.price}</p>
 
         <div className="flex gap-4">
           <button
             type="button"
-            className="rounded-lg bg-green-600 px-8 py-3 text-white transition-colors hover:bg-green-700"
+            className={`rounded-lg bg-[var(--color-purple)] px-8 py-3 text-white transition-colors hover:cursor-pointer hover:bg-[var(--color-dark-purple)]`}
             onClick={addToBag}
           >
-            Add to Bag
+            {productIsAlreadyInBag ? 'Added to Bag' : 'Add to Bag'}
           </button>
-          <button
+          {/* <button
             type="button"
             className="rounded-lg border border-gray-300 px-8 py-3 text-gray-700 transition-colors hover:bg-gray-100"
           >
             Add to Wishlist
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

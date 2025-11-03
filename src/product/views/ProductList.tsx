@@ -12,7 +12,7 @@ export const ProductList = () => {
     return <div>Error loading products</div>;
   }
 
-  return productList.map(product => (
-    <ProductListItem key={product.id} product={product} />
+  return productList.map((product, index) => (
+    <ProductListItem key={product.id} product={product} index={index} />
   ));
 };
