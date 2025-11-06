@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>K-Emi Store</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment,
+      // e.g., https://www.foo.tld/one/two?a=b&c=d#qwe, becomes
+      // https://www.foo.tld/?/one/two&a=b~and~c=d#qwe
+      // Note: this 404.html file must be at least 512 bytes for it to work
+      // with Internet Explorer (it is currently > 512 bytes)
+
+      // Skip this script if we're on Netlify (which handles SPA routing differently)
+      if (window.location.hostname.includes('netlify.app') || window.location.hostname.includes('netlify.com')) {
+        // On Netlify, just redirect to the home page
+        window.location.replace('/');
+      } else {
+        // GitHub Pages SPA logic
+        // If you're creating a Project Pages site and NOT using a custom domain,
+        // then set pathSegmentsToKeep to 1 (enterprise users may need to set it to > 1).
+        // This way the code will only replace the route part and not the real directory.
+        // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
+        // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
+        // For staging environments (pr-X subdirectories), we need pathSegmentsToKeep = 2
+        // https://username.github.io/repo-name/pr-7/one/two becomes
+        // https://username.github.io/repo-name/pr-7/?/one/two
+        
+        // Auto-detect if we're in a staging environment
+        var pathSegments = window.location.pathname.split('/').filter(Boolean);
+        var pathSegmentsToKeep = 1; // Default for production
+        
+        // Check if we're in a PR staging environment (path contains pr-X)
+        if (pathSegments.length > 1 && pathSegments[1].match(/^pr-\d+$/)) {
+          pathSegmentsToKeep = 2; // For staging: username.github.io/repo-name/pr-X/
+        }
+
+        var l = window.location;
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
